@@ -3,3 +3,9 @@ require 'autotest-growl'
 Autotest::Growl::image_dir = 'ruby'
 Autotest::Growl::clear_terminal = false
 Autotest::Growl::sticky_failure_notifications = true
+
+Autotest.add_hook :initialize do |autotest|
+  autotest.add_mapping(%r%^spec/(requests)/.*rb$%) do|filename, _|
+    filename
+  end
+end 
